@@ -1,0 +1,11 @@
+<% include header %>
+<div class="main">
+    <div id="content">
+        <% for(var i=0; i<articles.length; i++) { %>
+            <li>
+                <a href="articles/<%=articles[i]%>.html"><%= articles[i] %></a>
+            </li>
+        <% } %>
+    </div>
+</div>
+</body>
