@@ -50,6 +50,7 @@ to { -webkit-transform: rotate(3330deg) } //定义旋转动画
 <pre><code>removeClass(myClass);
 addClass(myClass);
 </pre></code>
+
 需要有一点时间间隔
 比如在“webkitAnimationEnd”事件触发时移除class，
 或者
@@ -61,42 +62,43 @@ addClass(myClass);
 
 ###一段实用的事件兼容代码
 
-<pre><code>//动画事件兼容
-        var VENDORS = ["Moz",'webkit','ms','O'];
-        var TRANSITION_END_NAMES = {
-            "Moz" : "transitionend"
-            ,"webkit" : "webkitTransitionEnd"
-            ,"ms" : "MSTransitionEnd"
-            ,"O" : "oTransitionEnd"
-        }
-        var ANIMATION_END_NAMES = {
-            "Moz" : "animationend"
-            ,"webkit" : "webkitAnimationEnd"
-            ,"ms" : "MSAnimationEnd"
-            ,"O" : "oAnimationEnd"
-        }
-        var ANIMATION_START_NAMES = {
-            "Moz" : "animationStart"
-            ,"webkit" : "webkitAnimationStart"
-            ,"ms" : "MSAnimationStart"
-            ,"O" : "oAnimationStart"
-        }
-        var css3Prefix,TRANSITION_END_NAME,ANIMATION_END_NAME,ANIMATION_START_NAME;
-        var mTestElement = document.createElement("div");
+<pre><code>
+//动画事件兼容
+var VENDORS = ["Moz",'webkit','ms','O'];
+var TRANSITION_END_NAMES = {
+    "Moz" : "transitionend"
+    ,"webkit" : "webkitTransitionEnd"
+    ,"ms" : "MSTransitionEnd"
+    ,"O" : "oTransitionEnd"
+}
+var ANIMATION_END_NAMES = {
+    "Moz" : "animationend"
+    ,"webkit" : "webkitAnimationEnd"
+    ,"ms" : "MSAnimationEnd"
+    ,"O" : "oAnimationEnd"
+}
+var ANIMATION_START_NAMES = {
+    "Moz" : "animationStart"
+    ,"webkit" : "webkitAnimationStart"
+    ,"ms" : "MSAnimationStart"
+    ,"O" : "oAnimationStart"
+}
+var css3Prefix,TRANSITION_END_NAME,ANIMATION_END_NAME,ANIMATION_START_NAME;
+var mTestElement = document.createElement("div");
 
-        for (var i = 0,l = VENDORS.length; i < l; i++) {
-            css3Prefix = VENDORS[i];
-            if ((css3Prefix + "Transition") in mTestElement.style) {
-                break;
-            }
-            css3Prefix = false;
-        }
+for (var i = 0,l = VENDORS.length; i < l; i++) {
+    css3Prefix = VENDORS[i];
+    if ((css3Prefix + "Transition") in mTestElement.style) {
+        break;
+    }
+    css3Prefix = false;
+}
 
-        if(css3Prefix) {
-            TRANSITION_END_NAME = TRANSITION_END_NAMES[css3Prefix];
-            ANIMATION_END_NAME = ANIMATION_END_NAMES[css3Prefix];
-            ANIMATION_START_NAME = ANIMATION_START_NAMES[css3Prefix];
-        }
+if(css3Prefix) {
+    TRANSITION_END_NAME = TRANSITION_END_NAMES[css3Prefix];
+    ANIMATION_END_NAME = ANIMATION_END_NAMES[css3Prefix];
+    ANIMATION_START_NAME = ANIMATION_START_NAMES[css3Prefix];
+}
 </pre></code>
 
 ***一些常见的api***
