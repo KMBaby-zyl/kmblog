@@ -3,12 +3,12 @@
 ***
 
 ###  如何定义和调用动画
-<pre><c1ode>.myClass{
+<pre><code>.myClass{
 -webkit-transform:rotate(90deg); //使旋转结束后保持旋转的角度不变
 -webkit-animation: animation 6s; //调用animation动画 在6秒内执行结束
-}</cdoe></pre>
+}</code></pre>
 
-<pre><c1ode>@-webkit-keyframes animation{
+<pre><code>@-webkit-keyframes animation{
 from { -webkit-transform: rotate(0deg) }
 to { -webkit-transform: rotate(3330deg) } //定义旋转动画
 
@@ -18,7 +18,7 @@ to { -webkit-transform: rotate(3330deg) } //定义旋转动画
 86% { left: 60px; opacity: 0;}
 100% { left: 110px; opacity: 1;}
 }
-}</cdoe></pre>
+}</code></pre>
 
 ### js 调用动画
 <pre><code>$(el).addClass("myClass"); // so easy

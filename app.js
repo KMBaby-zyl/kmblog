@@ -44,6 +44,7 @@ function(err, results){
     for(var i in articles){
         var path = '/content/'+articles[i]+'.md';
         var content = _md(path);
+        var fcon = getfcon(path);
         var opt = {
             content: content,
             filename: __dirname + '/view/articles.ejs'
@@ -64,7 +65,13 @@ function _md(path){
     console.log(path);
     var content_path = __dirname + path;
     var tok = marked.lexer(fs.readFileSync(content_path, 'utf8'));
-    return marked.parser(tok)
+    return marked.parser(tok);
 }
 
+function getfcon(path){
+    console.log(path);
+    var content_path = __dirname + path;
+    console.log(fs.readFileSync(content_path, 'utf8').substring(0,100));
+
+}
 
